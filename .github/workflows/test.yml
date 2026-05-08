@@ -1,0 +1,7 @@
+name: ARC Test
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: arc-runner-set  # Имя твоего Runner Set
+    steps:
+      - run: echo "Hello from my K8s cluster!"
