@@ -10,7 +10,7 @@ jobs:
     runs-on: arc-runner-set  # ← это имя твоего RunnerScaleSet
     steps:
       - name: Say hello
-        run: echo "Hello from my self-hosted runner!"
+        run: echo "Hello from my self-hosted runnerrr!"
 
       - name: Show runner info
         run: |
@@ -19,7 +19,7 @@ jobs:
           echo "Kernel: $(uname -r)"
 
       - name: Sleep a bit (чтобы успеть посмотреть под)
-        run: sleep 30
+        run: sleep 100
 
       - name: Done
         run: echo "Job complete, pod will be deleted"
