@@ -1,7 +1,25 @@
-name: ARC Test
-on: workflow_dispatch
+name: Test ARC Runner
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # позволяет запускать вручную из UI
+
 jobs:
-  test:
-    runs-on: arc-runner-set  # Имя твоего Runner Set
+  test-job:
+    runs-on: arc-runner-set  # ← это имя твоего RunnerScaleSet
     steps:
-      - run: echo "Hello from my K8s cluster!"
+      - name: Say hello
+        run: echo "Hello from my self-hosted runner!"
+
+      - name: Show runner info
+        run: |
+          echo "Hostname: $(hostname)"
+          echo "Whoami: $(whoami)"
+          echo "Kernel: $(uname -r)"
+
+      - name: Sleep a bit (чтобы успеть посмотреть под)
+        run: sleep 30
+
+      - name: Done
+        run: echo "Job complete, pod will be deleted"
