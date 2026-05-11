@@ -4,7 +4,7 @@ on:
   workflow_dispatch:        # только ручной запуск
     inputs:
       job_count:
-        description: 'Сколько параллельных джоб запустить'
+        description: 'Сколько параллельных джоб zzзапустить'
         required: true
         default: '3'
 
