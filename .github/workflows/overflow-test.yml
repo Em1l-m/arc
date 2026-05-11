@@ -1,0 +1,12 @@
+name: Overflow Test
+on:
+  workflow_dispatch:
+jobs:
+  overflow:
+    runs-on: arc-runner-set
+    strategy:
+      matrix:
+        id: [1,2,3,4,5,6,7,8,9,10]
+      max-parallel: 10
+    steps:
+      - run: sleep 30
