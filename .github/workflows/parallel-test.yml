@@ -1,0 +1,27 @@
+name: Parallel Scaling Test
+
+on:
+  workflow_dispatch:        # только ручной запуск
+    inputs:
+      job_count:
+        description: 'Сколько параллельных джоб запустить'
+        required: true
+        default: '3'
+
+jobs:
+  # Джоба-матрица: одна конфигурация → N параллельных джоб
+  scale-test:
+    runs-on: arc-runner-set
+    strategy:
+      matrix:
+        job_id: [1, 2, 3, 4, 5]  # 5 джоб одновременно
+      max-parallel: 5             # все параллельно
+    steps:
+      - name: Identify myself
+        run: echo "I am job #${{ matrix.job_id }} running on $(hostname)"
+
+      - name: Simulate work
+        run: |
+          echo "Job ${{ matrix.job_id }} started at $(date)"
+          sleep 20
+          echo "Job ${{ matrix.job_id }} finished at $(date)
