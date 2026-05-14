@@ -1,0 +1,12 @@
+name: Check Cache Env
+on:
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: arc-runner-set
+    steps:
+      - name: Show S3 env (без секретов!)
+        run: |
+          echo "Endpoint: $S3_ENDPOINT"
+          echo "Region: $AWS_REGION"
+          echo "Key ID starts with: ${AWS_ACCESS_KEY_ID:0:4}..."
